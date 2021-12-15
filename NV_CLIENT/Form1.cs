@@ -21,11 +21,11 @@ namespace NV_CLIENT
         {
             ChitietNV newnhanvien = new ChitietNV()
             {
-                 Manv = int.Parse(textBox2.Text.Trim()),
-                 Ten = textBox3.Text.Trim(),
-                 Chucvu = textBox4.Text.Trim(),
-                 Phongban = textBox5.Text.Trim(),
-                 Chuthich =textBox6.Text.Trim()
+                 ID = int.Parse(textBox2.Text.Trim()),
+                 Name = textBox3.Text.Trim(),
+                 Address = textBox4.Text.Trim(),
+                 Salary = int.Parse(textBox5.Text.Trim()),
+                 Age = int.Parse(textBox6.Text.Trim())
             };
             bool result = new NV_BUS().Addnew(newnhanvien);
             if (result)
@@ -47,15 +47,15 @@ namespace NV_CLIENT
         {
             if (dataGridView1.SelectedRows.Count == 1)
             {
-                int manv = int.Parse(dataGridView1.SelectedRows[0].Cells["Manv"].Value.ToString());
+                int manv = int.Parse(dataGridView1.SelectedRows[0].Cells["ID"].Value.ToString());
                 ChitietNV nhanvien = new NV_BUS().Getdetails(manv);
                 if (nhanvien != null)
                 {
-                    textBox2.Text = nhanvien.Manv.ToString();
-                    textBox3.Text = nhanvien.Ten;
-                    textBox4.Text = nhanvien.Chucvu;
-                    textBox5.Text = nhanvien.Phongban;
-                    textBox6.Text = nhanvien.Chuthich;
+                    textBox2.Text = nhanvien.ID.ToString();
+                    textBox3.Text = nhanvien.Name;
+                    textBox4.Text = nhanvien.Address;
+                    textBox5.Text = nhanvien.Salary.ToString();
+                    textBox6.Text = nhanvien.Age.ToString();
                 }
             }
         }
@@ -72,11 +72,11 @@ namespace NV_CLIENT
         {
             ChitietNV newnhanvien = new ChitietNV()
             {
-                Manv = int.Parse(textBox2.Text.Trim()),
-                Ten = textBox3.Text.Trim(),
-                Chucvu = textBox4.Text.Trim(),
-                Phongban = textBox5.Text.Trim(),
-                Chuthich = textBox6.Text.Trim()
+                ID = int.Parse(textBox2.Text.Trim()),
+                Name = textBox3.Text.Trim(),
+                Address = textBox4.Text.Trim(),
+                Salary = int.Parse(textBox5.Text.Trim()),
+                Age = int.Parse(textBox6.Text.Trim())
             };
             bool result = new NV_BUS().Update(newnhanvien);
             if (!result) MessageBox.Show("SORRY BABY!!!");

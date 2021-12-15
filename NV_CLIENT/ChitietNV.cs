@@ -8,14 +8,14 @@ namespace NV_CLIENT
 {
     class ChitietNV
     {
-        public int Manv { get; set; }
+        public int ID { get; set; }
 
-        public string Ten { get; set; }
+        public string Name { get; set; }
 
-        public string Chucvu { get; set; }
+        public string Address { get; set; }
 
-        public string Phongban { get; set; }
+        public int Salary { get; set; }
 
-        public string Chuthich { get; set; }
+        public int Age { get; set; }
     }
 }

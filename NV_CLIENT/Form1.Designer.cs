@@ -81,45 +81,45 @@ namespace NV_CLIENT
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(90, 376);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 17);
+            this.label1.Size = new System.Drawing.Size(20, 16);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Manv";
+            this.label1.Text = "ID";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(90, 420);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 17);
+            this.label2.Size = new System.Drawing.Size(44, 16);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Ten";
+            this.label2.Text = "Name";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(90, 469);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 17);
+            this.label3.Size = new System.Drawing.Size(58, 16);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Chucvu";
+            this.label3.Text = "Address";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(486, 371);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 17);
+            this.label4.Size = new System.Drawing.Size(46, 16);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Phongban";
+            this.label4.Text = "Salary";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(486, 417);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 17);
+            this.label5.Size = new System.Drawing.Size(32, 16);
             this.label5.TabIndex = 7;
-            this.label5.Text = "Chuthich";
+            this.label5.Text = "Age";
             // 
             // textBox2
             // 

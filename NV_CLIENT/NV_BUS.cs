@@ -15,7 +15,7 @@ namespace NV_CLIENT
     class NV_BUS
     {
         static IFirebaseConfig config = new FirebaseConfig
-        {BasePath = "https://antran259820-default-rtdb.asia-southeast1.firebasedatabase.app/" };  
+        {BasePath = "https://serviceemploy-5f3f5-default-rtdb.asia-southeast1.firebasedatabase.app/" };  
         static FirebaseClient client = new FirebaseClient (config);
 
         public async void ListenFirebase(DataGridView dataGridView1)
@@ -55,7 +55,7 @@ namespace NV_CLIENT
         {
             FirebaseResponse response = client.Get("nhanviens");
             Dictionary<String, ChitietNV> dictNhanviens = response.ResultAs<Dictionary<String, ChitietNV>>();
-            String key = dictNhanviens.FirstOrDefault(x => x.Value.Manv == manv).Key;
+            String key = dictNhanviens.FirstOrDefault(x => x.Value.ID == manv).Key;
             return key;
         }
 
@@ -64,7 +64,7 @@ namespace NV_CLIENT
             List<ChitietNV> nhanviens = new List<ChitietNV>();
             foreach(var item in laydanhsach())
             {
-                if (item.Ten.ToLower().Contains(keyword.ToLower()))
+                if (item.Name.ToLower().Contains(keyword.ToLower()))
                 {
                     nhanviens.Add(item);
                 }
@@ -77,7 +77,7 @@ namespace NV_CLIENT
             try
             {
                 //client.Push("nhanviens", newnhanvien);
-                client.Set("nhanviens/NV" + newnhanvien.Manv, newnhanvien); //custom key 
+                client.Set("nhanviens/NV" + newnhanvien.ID, newnhanvien); //custom key 
                 return true;
             }
             catch { return false; }
@@ -87,7 +87,7 @@ namespace NV_CLIENT
         {
             try
             {
-                String key = GetKeyByCode(newnhanvien.Manv);
+                String key = GetKeyByCode(newnhanvien.ID);
                 if (String.IsNullOrEmpty(key)) return false; client.Set("nhanviens/" + key, newnhanvien);
                 return true;
             }

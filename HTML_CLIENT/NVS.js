@@ -1,4 +1,4 @@
-const config = { databaseURL: "https://antran259820-default-rtdb.asia-southeast1.firebasedatabase.app/"}; 
+const config = { databaseURL: "https://serviceemploy-5f3f5-default-rtdb.asia-southeast1.firebasedatabase.app/"}; 
 firebase.initializeApp (config); 
 const dbRef = firebase.database().ref(); 
 
@@ -23,22 +23,22 @@ function lnkID_Click(Manv){
 
 function btnAdd_Click(){
     var newnhanvien = {
-        Manv: document.getElementById("txtManv").value,
-        Ten: document.getElementById("txtTen").value,
-        Chucvu: document.getElementById("txtChucvu").value,
-        Phongban: document.getElementById("txtPhongban").value,
-        Chuthich: document.getElementById("txtChuthich").value
+        ID: document.getElementById("txtManv").value,
+        Name: document.getElementById("txtTen").value,
+        Address: document.getElementById("txtChucvu").value,
+        Salary: document.getElementById("txtPhongban").value,
+        Age: document.getElementById("txtChuthich").value
     };
     addNew(newnhanvien);
 }
 
 function btnUpdate_Click(){
     var newnhanvien = {
-        Manv:document.getElementById("txtManv").value,
-        Ten: document.getElementById("txtTen").value,
-        Chucvu: document.getElementById("txtChucvu").value,
-        Phongban: document.getElementById("txtPhongban").value,
-        Chuthich: document.getElementById("txtChuthich").value
+        ID:document.getElementById("txtManv").value,
+        Name: document.getElementById("txtTen").value,
+        Address: document.getElementById("txtChucvu").value,
+        Salary: document.getElementById("txtPhongban").value,
+        Age: document.getElementById("txtChuthich").value
     };
     update(newnhanvien);
 }
@@ -64,7 +64,7 @@ function getDetails(manv){
     dbRef.child("nhanviens").once ("value", (snapshot) => { 
         snapshot.forEach((child) => { 
         var nhanvien = child.val();
-         if (nhanvien. Manv == manv) { 
+         if (nhanvien.ID == manv) { 
         renderNVDetails (nhanvien); 
         }
     }); 
@@ -75,21 +75,21 @@ function getDetails(manv){
 function search(keyword){
     dbRef.child("nhanviens").once ("value", (snapshot) => { 
         var nhanviens = []; snapshot.forEach((child) => { 
-        var nhanvien = child.val(); if (nhanvien.Ten.toLowerCase().includes (keyword.toLowerCase())) { 
+        var nhanvien = child.val(); if (nhanvien.Name.toLowerCase().includes (keyword.toLowerCase())) { 
         nhanviens.push (nhanvien);}
         }); 
         renderNVList (nhanviens); });
 }
 
 function addNew(newnhanvien){
-    dbRef.child("nhanviens/NV" + newnhanvien.Manv).set(newnhanvien); 
+    dbRef.child("nhanviens/NV" + newnhanvien.ID).set(newnhanvien); 
 }
 
 function update(newnhanvien){
     dbRef.child("nhanviens").once ("value", (snapshot) => { 
         snapshot.forEach((child) => { 
         var nhanvien = child.val(); 
-        if (nhanvien.Manv == newnhanvien.Manv) { 
+        if (nhanvien.ID == newnhanvien.ID) { 
         var key = child. key; 
         dbRef.child("nhanviens").child(key).set(newnhanvien); 
     }
@@ -100,7 +100,7 @@ function update(newnhanvien){
 function deletee(manv){
     dbRef.child("nhanviens").once ("value", (snapshot) => { 
         snapshot.forEach((child) => { 
-        var nhanvien = child.val(); if (nhanvien.Manv == manv) { 
+        var nhanvien = child.val(); if (nhanvien.ID == manv) { 
         var key = child. key; dbRef.child ("nhanviens").child (key).remove();} 
         }); 
         }); 
@@ -110,12 +110,12 @@ function deletee(manv){
 function renderNVList(nhanviens){
     var rows = "";
     for(var ChitietNV of nhanviens){
-        rows += "<tr onclick='lnkID_Click(" + ChitietNV.Manv + ")' style='cursor:pointer'>";
-        rows += "<td>" + ChitietNV.Manv + "</td>";
-        rows += "<td>" + ChitietNV.Ten + "</td>";
-        rows += "<td>" + ChitietNV.Chucvu + "</td>";
-        rows += "<td>" + ChitietNV.Phongban + "</td>";
-        rows += "<td>" + ChitietNV.Chuthich + "</td>";
+        rows += "<tr onclick='lnkID_Click(" + ChitietNV.ID + ")' style='cursor:pointer'>";
+        rows += "<td>" + ChitietNV.ID + "</td>";
+        rows += "<td>" + ChitietNV.Name + "</td>";
+        rows += "<td>" + ChitietNV.Address + "</td>";
+        rows += "<td>" + ChitietNV.Salary + "</td>";
+        rows += "<td>" + ChitietNV.Age + "</td>";
         rows += "</td>";
     }
     var header = "<tr><th>Manv</th><th>Ten</th><th>Chucvu</th><th>Phongban</th><th>Chuthich</th></tr>";
@@ -123,11 +123,11 @@ function renderNVList(nhanviens){
 }
 
 function renderNVDetails(nhanvien){
-    document.getElementById("txtManv").value = nhanvien.Manv;
-    document.getElementById("txtTen").value = nhanvien.Ten ;
-    document.getElementById("txtChucvu").value = nhanvien.Chucvu;
-    document.getElementById("txtPhongban").value = nhanvien.Phongban;
-    document.getElementById("txtChuthich").value = nhanvien.Chuthich;
+    document.getElementById("txtManv").value = nhanvien.ID;
+    document.getElementById("txtTen").value = nhanvien.Name ;
+    document.getElementById("txtChucvu").value = nhanvien.Address;
+    document.getElementById("txtPhongban").value = nhanvien.Salary;
+    document.getElementById("txtChuthich").value = nhanvien.Age;
 }
 
 function clearTextboxes(){
